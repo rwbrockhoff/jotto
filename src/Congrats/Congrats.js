@@ -10,3 +10,8 @@ export default function Congrats(props) {
  :
     <div data-test="comp-congrats"/>    
 }
+
+
+Congrats.propTypes = {
+  success: PropTypes.bool.isRequired
+}

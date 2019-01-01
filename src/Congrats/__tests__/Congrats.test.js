@@ -6,8 +6,11 @@ import Congrats from '../Congrats'
 
 Enzyme.configure({adapter: new EnzymeAdapter() })
 
-const setup = (props={}) => {
-    return shallow(<Congrats {...props} />)
+const defaultProps = {success: false}
+
+const setup = (props={ success: false }) => {
+    const setUpProps = {...defaultProps, ...props}
+    return shallow(<Congrats {...setUpProps} />)
 }
 
 describe('Congrats Component', () => {
@@ -19,7 +22,7 @@ describe('Congrats Component', () => {
     })
     
     test('Renders no text when success prop is false', () => {
-        const wrapper = setup( {success: false} )
+        const wrapper = setup()
         const comp = findAttr(wrapper, 'comp-congrats')
         expect(comp.text().length).toBe(0)
     })
